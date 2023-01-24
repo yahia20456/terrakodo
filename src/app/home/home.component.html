@@ -1,0 +1,73 @@
+<div class="container-fluid bg-light">
+    <div class="container bg-light">
+
+        <div class="row mt-4" style="height: 500px;">
+            <div class="col"></div>
+            <div class="col-md-6 bg-white shadow">
+
+                <div class="card bg-warning mt-4">
+                    <h4 class="text-white p-3 pt-2 pb-2">Manage Your Tasks</h4>
+                </div>
+                <form #formCollaboration="ngForm">
+
+                <div class="shadow">
+                        <input type="text" class="form-control" placeholder="Title " name="task" [(ngModel)]="task.title" name="title">
+                        <textarea type="text" class="form-control" placeholder="Description " name="task" [(ngModel)]="task.description" name="description"></textarea>
+                        <input type="number" class="form-control" placeholder="Priority " name="task" [(ngModel)]="task.priority" name="priority">
+                        <input type="date" class="form-control"  [(ngModel)]="task.date"  name="date">
+                          
+                        <button class="btn btn-outline-success" type="button" (click)="addTask()" >Add Task</button>
+                
+                </div>
+
+                <h4 class="text-primary mt-4">Tasks in progress : </h4>
+
+                <div style="overflow-y: auto;" *ngFor="let tasks of tasks">
+                    <div class="m-3" >
+                        <div class="p-2 shadow border" id="tasks" >
+                            <div class="input-group row ps-3" >
+                                <div class="card col-md-10 border-0">{{tasks.title}}</div>
+                                <button class="btn btn-outline-primary col me-2" data-bs-toggle="modal" type="button" data-bs-target="#exampleModal" >e</button>
+                                <div class="btn btn-outline-danger col" (click)="deleteTask(tasks.id)" >X</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="text-primary mt-4">Tasks Completed : </h4>
+
+                <div style="overflow-y: auto;">
+                    <div class="m-3" >
+                        <div class="p-2 shadow border" id="tasks" >
+                            <div class="input-group row ps-3" >
+                                <div class="card col-md-10 border-0"> </div>
+                                <button class="btn btn-outline-primary col me-2" data-bs-toggle="modal" type="button" data-bs-target="#exampleModal" >e</button>
+                                <div class="btn btn-outline-danger col" >X</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  </form>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group p-4">
+                                <input type="text" class="form-control" placeholder="Enter task " name="task" [(ngModel)]="editTaskValue">
+                                <button class="btn btn-outline-success" type="button" data-bs-dismiss="modal" >Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="col"></div>
+
+        </div>
+
+    </div>
+</div>
